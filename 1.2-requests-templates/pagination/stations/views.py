@@ -9,8 +9,6 @@ def index(request):
     return redirect(reverse('bus_stations'))
 
 
-
-
 def bus_stations(request):
     with open(settings.BUS_STATION_CSV, mode='r', encoding='utf-8') as file:
         reader = csv.DictReader(file)
