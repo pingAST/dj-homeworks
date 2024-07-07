@@ -1,0 +1,55 @@
+# примеры API-запросов
+
+@baseUrl = http://127.0.0.1:8000/api
+
+
+# получение объявлений
+GET {{baseUrl}}/advertisements/
+Content-Type: application/json
+
+
+###
+
+# создание объявления
+POST {{baseUrl}}/advertisements/
+Content-Type: application/json
+Authorization: Token 3536ef7d2fe841fa59e7fc596fba09da6adf6a4e	#tau
+
+#Authorization: Token 84d611ccfb23c20e3814699203ce8ab70f201a43	#astakhov
+#Authorization: Token 3536ef7d2fe841fa59e7fc596fba09da6adf6a4e	#anakina
+#Authorization: Token 48d27d31fea7f6d971989bb1bb2510938b7b7a00	#admin
+#Authorization: Token 5f27bfaedd6ddda66157d05c925e364003fac6e3	#tau
+
+{
+  "title": "Ноутбук11",
+  "description": "Срочно"
+}
+
+###
+
+# попытка поменять объявление
+PATCH {{baseUrl}}/advertisements/1/
+Content-Type: application/json
+Authorization: Token 48d27d31fea7f6d971989bb1bb2510938b7b7a00
+
+{
+  "status": "CLOSED"
+}
+
+###
+
+# фильтрация по создателю
+GET {{baseUrl}}/advertisements/?creator=2
+Content-Type: application/json
+
+###
+
+#Фильтер по  статусу
+GET {{baseUrl}}/advertisements/?status=CLOSED
+Content-Type: application/json
+
+###
+
+# фильтрация по дате
+GET {{baseUrl}}/advertisements/?created_at_before=2020-10-01
+Content-Type: application/json
